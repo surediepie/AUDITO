@@ -1,39 +1,37 @@
-# Audito MVP
+@"
+# Audito — Voice Authenticity Screening
 
-A small Gradio app for voice-spoof screening using a Hugging Face audio-classification model.
+Audito is a Python-based prototype designed to screen audio recordings for potential AI-generated or spoofed speech.
 
-## Important limitations
+## Features
 
-- Treat output as a screening signal, not proof of authenticity.
-- Confirm the model's label mapping and test it on a labeled evaluation set before making performance claims.
-- Do not upload private or sensitive recordings.
-- The first inference may take time because model weights are downloaded at runtime.
+- Upload audio recordings for analysis
+- AI audio classification using a pretrained Hugging Face model
+- Classification labels and confidence scores
+- Audio validation and error handling
+- Web interface built with Gradio
 
-## Run locally (Windows PowerShell)
+## Tech Stack
 
-Use Python 3.11.
+- Python 3.11
+- PyTorch
+- Hugging Face Transformers
+- Gradio
+- NumPy
+- SoundFile
 
-```powershell
-py -3.11 -m venv .venv
-.\.venv\Scripts\Activate.ps1
-python -m pip install --upgrade pip
-python -m pip install -r requirements.txt
-python app.py
-```
+## Model
 
-Open http://localhost:7860.
+Audito uses the following pretrained model:
 
-## Docker
+[MelodyMachine/Deepfake-audio-detection-V2](https://huggingface.co/MelodyMachine/Deepfake-audio-detection-V2)
 
-```powershell
-docker build -t audito:latest .
-docker run --rm -p 7860:7860 audito:latest
-```
+The model's output is a screening signal, not definitive proof that a recording is genuine or AI-generated. Displayed scores are not calibrated probabilities.
 
-## Configuration
+## Getting Started
 
-Set `AUDITO_MODEL_ID` to another compatible Hugging Face audio-classification model if needed. Verify its task, labels, license, and intended use before changing it.
+### 1. Clone the repository
 
-## AWS
-
-The Dockerfile can be used with Amazon ECR and a container hosting service such as Amazon ECS Express Mode. AWS resources are billable; set a budget alert and delete resources when finished.
+```bash
+git clone https://github.com/YOUR_USERNAME/audito.git
+cd audito
