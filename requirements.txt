@@ -1,5 +1,9 @@
-gradio==5.44.1
-transformers==4.57.1
-torch
-soundfile
-numpy
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.4.1+cpu
+transformers==4.46.3
+huggingface-hub>=0.28.0,<1.0
+gradio==5.20.1
+numpy>=1.26.4,<2.0.0
+soundfile==0.12.1
+imageio==2.35.1
+imageio-ffmpeg==0.5.1
